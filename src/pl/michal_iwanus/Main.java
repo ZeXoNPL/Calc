@@ -5,15 +5,18 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        //This is simple calcuator to operation only on simple mathemematical operation
-        //Call of constructor
+        //This is simple calculator to operation only on simple mathematical operation
+        //Creating Scanner constructor
         Scanner Scanner = new Scanner(System.in);
 
         //Set variable
         char userChoice;
-        int a, b;
+        double result, a, b;
+
+        //Creating my own constructor
         Calculator Calculator = new Calculator();
 
+        //Infinity menu
         for(;;)
         {
             Calculator.menu();
@@ -21,52 +24,90 @@ public class Main {
 
             switch (userChoice)
             {
-                case '1':
-                {
+
+                case '1' -> {
+                    //Set first value
                     System.out.print("Specify the first value: ");
-                    a = Scanner.nextInt();
+                    a = Scanner.nextDouble();
+
+                    //Set second value
                     System.out.print("Specify the second value: ");
-                    b = Scanner.nextInt();
-                    Calculator.addition(a, b);
-                    break;
+                    b = Scanner.nextDouble();
+
+                    //Set result
+                    result = Calculator.addition(a, b);
+
+                    //Show a result
+                    System.out.println(a + " + " + b + " = " + result);
                 }
-                case '2':
-                {
+
+                case '2' -> {
+                    //Set first value
                     System.out.print("Specify the first value: ");
-                    a = Scanner.nextInt();
+                    a = Scanner.nextDouble();
+
+                    //Set second value
                     System.out.print("Specify the second value: ");
-                    b = Scanner.nextInt();
-                    Calculator.substraction(a, b);
-                    break;
+                    b = Scanner.nextDouble();
+
+                    //Set result
+                    result = Calculator.subtraction(a, b);
+
+                    //Show a result
+                    System.out.println(a + " - " + b + " = " + result);
                 }
-                case '3':
-                {
+
+                case '3' -> {
+                    //Set first value
                     System.out.print("Specify the first value: ");
-                    a = Scanner.nextInt();
+                    a = Scanner.nextDouble();
+
+                    //Set second value
                     System.out.print("Specify the second value: ");
-                    b = Scanner.nextInt();
-                    Calculator.multiplication(a, b);
-                    break;
+                    b = Scanner.nextDouble();
+
+                    //Set result
+                    result = Calculator.multiplication(a, b);
+
+                    //Show a result
+                    System.out.println(a + " * " + b + " = " + result);
                 }
-                case '4':
-                {
+
+                case '4' -> {
+                    //Set first value
                     System.out.print("Specify the first value: ");
-                    a = Scanner.nextInt();
+                    a = Scanner.nextDouble();
+
+                    //Set second value
                     System.out.print("Specify the second value: ");
-                    b = Scanner.nextInt();
-                    Calculator.division(a, b);
-                    break;
+                    b = Scanner.nextDouble();
+
+                    //Set result
+                    result = Calculator.division(a, b);
+
+                    //Show a result
+                    System.out.println(a + " / " + b + " = " + result);
                 }
-                case '5':
-                {
-                    System.exit(0);
-                    break;
+
+                case '5' -> {
+                    //Set first value
+                    System.out.print("Specify the first value: ");
+                    a = Scanner.nextDouble();
+
+                    //Set second value
+                    System.out.print("Specify the second value: ");
+                    b = Scanner.nextDouble();
+
+                    //Set result
+                    result = Calculator.modulo(a, b);
+
+                    //Show a result
+                    System.out.println(a + " % " + b + " = " + result);
                 }
-                default:
-                {
-                    System.out.println("There's no option");
-                    continue;
-                }
+
+                case '6' -> System.exit(0);
+
+                default -> System.out.println("There's no option");
             }
         }
     }
@@ -74,6 +115,8 @@ public class Main {
 
 class Calculator
 {
+
+    //Classic menu
     void menu()
     {
         System.out.println("Press key to do");
@@ -81,43 +124,37 @@ class Calculator
         System.out.println("2 - Subtraction");
         System.out.println("3 - Multiplication");
         System.out.println("4 - Division");
-        System.out.println("5 - Exit");
+        System.out.println("5 - Modulo");
+        System.out.println("6 - Exit");
         System.out.println("--------------------");
         System.out.print("What do you want to do: ");
     }
 
-    double addition(double a, double b)
+    double addition(double a, double b) // +
     {
-        double c = a + b;
-        System.out.print(a + " + " + b + " = " + c);
-        System.out.println();
-        return c;
+        return a + b;
     }
 
-    double substraction(double a, double b)
+    double subtraction(double a, double b) // -
     {
-        double c = a + b;
-        System.out.print(a + " - " + b + " = " + c);
-        System.out.println();
-        return c;
+        return a - b;
     }
 
-    double multiplication(double a, double b)
+    double multiplication(double a, double b) // *
     {
-        double c = a + b;
-        System.out.print(a + " * " + b + " = " + c);
-        System.out.println();
-        return c;
+        return a * b;
     }
 
-    double division(double a, double b)
+    double modulo(double a, double b) // %
+    {
+        return a % b;
+    }
+
+    double division(double a, double b) // '/'
     {
         if (a == 0)
         {
-            double c = 0;
-            System.out.print(a + " / " + b + " = " + c);
-            System.out.println();
-            return c;
+            return 0;
         }
         else if (b == 0)
         {
@@ -126,11 +163,7 @@ class Calculator
         }
         else
         {
-            double c = a + b;
-            System.out.print(a + " / " + b + " = " + c);
-            System.out.println();
-            return c;
+            return a / b;
         }
     }
-
 }
